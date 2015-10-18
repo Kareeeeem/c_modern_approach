@@ -2,23 +2,21 @@
 # ran from there. I never worked with makefiles so gotta figure out how
 # to make it smarter.
 
-CC := gcc
-CFLAGS := -Wall -W -O -std=c99
-OBJDIR := bin
+CC = gcc
+CFLAGS = -Wall -W -O -g -std=c99
+OBJDIR = bin
 
 # this is probably a really roundabout way of doing this. Takes all the
 # c files, extracts the basenames. Then appends ".0" and prefixes the
 # directory. So we fo from ex1.c to bin/ex1.o.
 
-sources := $(wildcard *.c)
-basenames := $(basename $(sources))
-obj_names := $(addsuffix .o, $(basenames))
-
-OBJS := $(addprefix $(OBJDIR)/, $(obj_names))
+sources = $(wildcard *.c)
+basenames = $(basename $(sources))
+OBJS = $(addprefix $(OBJDIR)/, $(basenames))
 
 all: $(OBJS)
 
-$(OBJDIR)/%.o: %.c
+$(OBJDIR)/%: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 $(OBJS): | $(OBJDIR)
