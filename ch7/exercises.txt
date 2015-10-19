@@ -1,0 +1,88 @@
+1. Give the decimal value.
+    a. 077 = 63
+    b. 0x77 = 119
+    c. 0xABC = 1583
+
+2. Which ones aren't legal? And classify the rest as integer or floating point.
+    a. 010E2 (X)
+    b. 32.1E+5 Floating point
+    c. 0790 Integer
+    d. 100_000 (X)
+    e. 3.978e-2 Floating point
+
+3. Which ones aren't legal?
+    a. short unsigned int
+    b. short float (X)
+    c. long double
+    d. unsigned long
+
+4. If x is a variable of type char, which one of the following statements is
+illegal?
+    a. i += c;
+    b. c = 2 * c - 1;
+    c. putchar(c);
+    d. printf(c); (X)
+
+5. Which one is not a legal way to write 65?
+    a. 'A'
+    b. 0b1000001
+    c. 0101
+    d. 0x41
+
+6. Which of char, short, int or long is the smallest to guatanteed to be large
+enough to store the items of data?
+    assuming 16bit
+    a. Days in month = char
+    b. Days in year = short
+    c. Minutes in day = short
+    d. Seconds in day = long
+
+7. For each of these whats the equivalent octal escape?
+    a. \b = \10
+    b. \n = \12
+    c. \r = \15
+    d. \t = \11
+
+8. For each of these whats the equivalent hex escape?
+    a. \b = \0x08
+    b. \n = \0x0A
+    c. \r = \0x0D
+    d. \t = \0x09
+
+9. Suppose that i and j are variables of type int.
+What is the type of the expression i / j + 'a'?
+    int
+
+10. int i; long j; unsigned int k; i + (int) j * k?
+    unsigned int
+
+11. int i; float f; double d; i * f / d?
+    double
+
+12. int i; float f; double d; d = i + f
+    double
+
+13. char c     = '\1';
+    short s    = 2;
+    int i      = -3;
+    long m     = 5;
+    float f    = 6.5;
+    double d   = 7.5;
+
+    a. c * i   = -3
+    b. s + m   = 8.5
+    c. f / c   = 6.500000
+    d. d / s   = 3.750000
+    e. f - d   = -1.00000
+    f. (int) f = 6
+
+14. Does the dollowing statement always compute the fractional part of f
+correctly (assuming that f and frac_part are floats)? frac_part = f - (int) f;
+    If the float value is outside of the range of an int the result of the
+    conversion is meaningless or worse.
+
+15. Define types Int8 Int16 and Int32 so they rep 8 16 and 32 bit ints on my
+computer.
+    typedef signed char Int8;
+    typedef short int Int16;
+    typedef int Int32;
