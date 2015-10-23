@@ -1,0 +1,19 @@
+1. Why is `sizeof(a) / sizeof(a[0])` superior to `sizeof(a) / sizeof(t)`.
+    You might end up changing the type of array elements, the first
+    technique covers that. The second requires another code edit.
+
+2. Describe how to use a digit as an array subscript.
+    char i = '4';
+    array[i-'0'];
+
+3. Declare an array names weekend containing seven bool values, first
+   and last should be true.
+    bool weekend[7] = {[0] = true, [6] = true};
+
+4. Use designated initializers in 3.
+    Oops, already did.
+
+8. An array for a month of hourly temperature readings.
+    float temperature_readings[30][24];
+
+
