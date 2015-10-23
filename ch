@@ -30,7 +30,7 @@ tmux send-keys "vim" ENTER C-a C-m
 tmux split-window -v -p 20 -c "#{pane_current_path}"
 
 # Add the bin folder to the path.
-tmux send-keys "PATH=./bin:$PATH" ENTER C-a C-l
+tmux send-keys "PATH=$PWD/$CHAPTER/bin:$PATH" ENTER C-a C-l
 
 # Return to the marked pane.
 tmux select-pane
