@@ -14,7 +14,7 @@ struct money calculate_bills(int amount, int bill)
 
     m.number_of_bills = amount / bill;
     m.amount_left = amount - bill * m.number_of_bills;
-    
+
     return m;
 }
 

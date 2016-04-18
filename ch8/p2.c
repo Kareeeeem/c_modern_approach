@@ -17,10 +17,14 @@ int main(void) {
     }
 
     printf("Digit: \t\t");
-    for (int i = 0; i < 10; i++) printf("%d ", i);
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", i);
+    }
 
     printf("\nOccurances: \t");
-    for (int i = 0; i < 10; i++) printf("%d ", digit_seen[i]);
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", digit_seen[i]);
+    }
 
     printf("\n");
 

@@ -1,6 +1,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+void count_digits(long number);
+long get_number(void);
+
 void count_digits(long number) {
     int digit, digit_seen[10] = {0};
 
@@ -30,7 +33,9 @@ long get_number() {
 
 int main(void) {
     long n;
-    while ((n = get_number())) count_digits(n);
+    do {
+        n = get_number();
+        count_digits(n);
+    } while (n > 0);
     return 0;
 }
-
