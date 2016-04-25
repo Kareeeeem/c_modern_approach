@@ -32,7 +32,7 @@ static bool is_valid_move(int row, int column, int move) {
 int main() {
     unsigned int seed;
     int direction;
-
+    char letter     = 'A';
     bool moves_left = true;
     int row         = 0;
     int column      = 0;
@@ -45,32 +45,29 @@ int main() {
     seed = (unsigned int) time(NULL);
     srand(seed);
 
-    for (char letter = 'A'; letter <= 'Z'; letter++) {
-        if (!moves_left)
-            break;
+    while(letter <= 'Z' && moves_left) {
+        if (grid[row][column] == AVAILABLE)
+            grid[row][column] = letter;
 
-        grid[row][column] = letter;
+        moves_left = !(!is_valid_move(row, column, RIGHT) &&
+                !is_valid_move(row, column, LEFT) &&
+                !is_valid_move(row, column, UP) &&
+                !is_valid_move(row, column, DOWN));
 
-        while (moves_left) {
-            moves_left = !(!is_valid_move(row, column, RIGHT) &&
-                    !is_valid_move(row, column, LEFT) &&
-                    !is_valid_move(row, column, UP) &&
-                    !is_valid_move(row, column, DOWN));
+        direction = rand() % 4;
 
-            direction = rand() % 4;
-            if (direction == UP && is_valid_move(row, column, UP)) {
-                row--;
-                break;
-            } else if (direction == RIGHT && is_valid_move(row, column, RIGHT)) {
-                column++;
-                break;
-            } else if (direction == DOWN && is_valid_move(row, column, DOWN)) {
-                row++;
-                break;
-            } else if (direction == LEFT && is_valid_move(row, column, LEFT)) {
-                column--;
-                break;
-            }
+        if (direction == UP && is_valid_move(row, column, UP)) {
+            row--;
+            letter++;
+        } else if (direction == RIGHT && is_valid_move(row, column, RIGHT)) {
+            column++;
+            letter++;
+        } else if (direction == DOWN && is_valid_move(row, column, DOWN)) {
+            row++;
+            letter++;
+        } else if (direction == LEFT && is_valid_move(row, column, LEFT)) {
+            column--;
+            letter++;
         }
     }
 
