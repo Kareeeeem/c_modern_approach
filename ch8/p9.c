@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define UP          0
 #define RIGHT       1
@@ -9,80 +10,63 @@
 
 #define ROWS        10
 #define COLUMNS     10
-#define DOT         '.'
+#define AVAILABLE   '.'
 
-static char grid[ROWS][COLUMNS] = {
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-    {DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT, DOT},
-};
+static char grid[ROWS][COLUMNS];
 
 static bool is_valid_move(int row, int column, int move) {
     switch (move) {
     case UP:
-        return row != 0 && grid[row-1][column] == DOT;
+        return row != 0 && grid[row-1][column] == AVAILABLE;
     case DOWN:
-        return row != ROWS -1 && grid[row+1][column] == DOT;
+        return row != ROWS -1 && grid[row+1][column] == AVAILABLE;
     case RIGHT:
-        return column != COLUMNS -1 && grid[row][column+1] == DOT;
+        return column != COLUMNS -1 && grid[row][column+1] == AVAILABLE;
     case LEFT:
-        return column != 0 && grid[row][column-1] == DOT;
+        return column != 0 && grid[row][column-1] == AVAILABLE;
     default:
         return false;
     }
 }
 
-int main(int argc, char *argv[]) {
+int main() {
     unsigned int seed;
     int direction;
-    int row = 0;
-    int column = 0;
-    bool moves_left = true;
 
-    if (argc != 2){
-        fprintf(stderr, "Usage: %s <seed>\n", argv[0]);
-        exit(EXIT_FAILURE);
+    bool moves_left = true;
+    int row         = 0;
+    int column      = 0;
+
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLUMNS; j++)
+            grid[i][j] = AVAILABLE;
     }
 
-    seed = (unsigned int) atoi(argv[1]);
+    seed = (unsigned int) time(NULL);
     srand(seed);
 
-    for (char i = 'A'; i <= 'Z'; i++) {
+    for (char letter = 'A'; letter <= 'Z'; letter++) {
         if (!moves_left)
             break;
 
-        grid[row][column] = i;
+        grid[row][column] = letter;
 
-        while (true) {
-            direction = rand() % 4;
-
-            if (!is_valid_move(row, column, RIGHT) &&
+        while (moves_left) {
+            moves_left = !(!is_valid_move(row, column, RIGHT) &&
                     !is_valid_move(row, column, LEFT) &&
                     !is_valid_move(row, column, UP) &&
-                    !is_valid_move(row, column, DOWN)){
-                moves_left = false;
-                break;
-            }
+                    !is_valid_move(row, column, DOWN));
 
+            direction = rand() % 4;
             if (direction == UP && is_valid_move(row, column, UP)) {
                 row--;
                 break;
-
             } else if (direction == RIGHT && is_valid_move(row, column, RIGHT)) {
                 column++;
                 break;
-
             } else if (direction == DOWN && is_valid_move(row, column, DOWN)) {
                 row++;
                 break;
-
             } else if (direction == LEFT && is_valid_move(row, column, LEFT)) {
                 column--;
                 break;
