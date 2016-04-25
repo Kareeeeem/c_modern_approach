@@ -2,8 +2,8 @@
 # ran from there. I never worked with makefiles so gotta figure out how
 # to make it smarter.
 
-CC = gcc
-CFLAGS = -Wall -W -O -g -std=c99
+CC = clang
+CFLAGS = -Weverything -g -std=c11
 OBJDIR = bin
 
 # this is probably a really roundabout way of doing this. Takes all the
