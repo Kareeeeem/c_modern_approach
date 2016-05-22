@@ -3,7 +3,7 @@
 # to make it smarter.
 
 CC = clang
-CFLAGS = -Weverything -g -std=c11
+CFLAGS = -Weverything -g -std=c99
 OBJDIR = bin
 
 # this is probably a really roundabout way of doing this. Takes all the
