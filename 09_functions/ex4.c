@@ -48,7 +48,10 @@ int day_of_year(int month, int day, int year) {
     };
 
     // check if leap year
-    if ((year % 100 == 0 && year % 400 == 0) || year % 4 == 0)
+    int century_leap_year = (year % 100 == 0 && year % 400 == 0);
+    int regular_leap_year = (year % 100 != 0 && year % 4 == 0);
+
+    if (century_leap_year || regular_leap_year)
         days_in_month[1]++;
 
     for (int i = 0; i < month - 1; i++)
