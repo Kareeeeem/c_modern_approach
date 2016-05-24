@@ -6,8 +6,8 @@ By default `int` types are signed.
 
 16 bit machine
 
-Type | min | max | width
----- | --- | --- |
+Type | min | max | width |
+---- | --- | --- | --- |
 `short int` | -32,768 | -32,768 | 16 bits
 `unsigned short int` | 0 | 65,535 | 16 bits
 `int` | -32,768 | 32,768 | 16 bits
@@ -17,8 +17,8 @@ Type | min | max | width
 
 32 bit machine
 
-Type | min | max | width
----- | --- | --- |
+Type | min | max | width |
+---- | --- | --- | --- |
 `short int` | -32,768 | -32,768 | 16 bits
 `unsigned short int` | 0 | 65,535 | 16 bits
 `int` | -2,147,483,648 | 2,147,483,648 | 32 bits
@@ -28,8 +28,8 @@ Type | min | max | width
 
 64 bit machine
 
-Type | min | max | width
----- | --- | --- |
+Type | min | max | width |
+---- | --- | --- | --- |
 `short int` | -32,768 | -32,768 | 16 bits
 `unsigned short int` | 0 | 65,535 | 16 bits
 `int` | -2,147,483,648 | 2,147,483,648 | 32 bits
