@@ -5,6 +5,7 @@
 By default `int` types are signed.
 
 16 bit machine
+
 Type | min | max
 ---- | --- | ---
 `short int` | -32,768 | -32,768
@@ -15,6 +16,7 @@ Type | min | max
 `unsigned long int` | 0 | 4,294,967,295
 
 32 bit machine
+
 Type | min | max
 ---- | --- | ---
 `short int` | -32,768 | -32,768
@@ -25,6 +27,7 @@ Type | min | max
 `unsigned long int` | 0 | 4,294,967,295
 
 64 bit machine
+
 Type | min | max
 ---- | --- | ---
 `short int` | -32,768 | -32,768
