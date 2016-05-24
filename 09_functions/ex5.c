@@ -1,16 +1,20 @@
 #include <stdio.h>
 
-int nth_digit(int number, int n);
+int num_digits(int n);
 
 int main(void) {
-    int number, n;
-    printf("Enter a number and the nth digit you want: ");
-    scanf("%d %d", &number, &n);
-    printf("Digit %d is %d\n", n, nth_digit(number, n));
+    int i;
+    printf("Enter a number: ");
+    scanf("%d", &i);
+    printf("%d has %d digits\n", i, num_digits(i));
+    return 0;
 }
 
-int nth_digit(int number, int n) {
-    while (--n)
-        number /= 10;
-    return number % 10;
+int num_digits(int n) {
+    int count = 0;
+    while (n) {
+        count++;
+        n /= 10;
+    }
+    return count;
 }
