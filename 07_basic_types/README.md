@@ -2,6 +2,7 @@
 
 * [Ints](#integer-types)
 * [Floats](#floating-types)
+* [Chars](#character-types)
 
 ## Integer types
 
@@ -138,7 +139,7 @@ most common sizes.
 
 ### Floating constants
 
-Be default they are `double`s. Force to be `float` by appending `F`/`f`.
+Be default they are `double`. Force to be `float` by appending `F`/`f`.
 
 ### Reading/writing Floating types
 
@@ -154,3 +155,16 @@ long double ld;
 scanf("%Lf", &ld);   /* prepend letter L before format char when reading. */
 print("%Lf", ld);    /* prepend letter L before format char when writing. */
 ```
+
+## Character types
+
+The values could be different from machine to machine because of
+different character sets. Most popular set is **ASCII** *American
+Standard Cod for Information Interchange*. A 7-bit code capable of
+representing 128 characters. Often extended to **Latin-1** providing 256
+characters.
+
+Function like ints.
+
+Can be signed or unsigned, The C standard doesn't specify a default. If
+you need to be sure then specify it.
