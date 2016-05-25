@@ -44,19 +44,47 @@ required to be at least 64 bits wide. C99 allows implementation defined
 Type of a *decimal* integer is normally `int`.
 
 If value is too lange in **C89** it'll try
-`long int` -> `unsigned long int`.  (*decimal* constants)
-`int` -> `unsigned int` -> `long int` -> `unsigned long int`. (*octal* or *hexadecimal* constants)
+* `long int` -> `unsigned long int`.  (*decimal* constants)
+* `int` -> `unsigned int` -> `long int` -> `unsigned long int`. (*octal* or *hexadecimal* constants)
 
 If value is too lange in **C89** it'll try
-`long int` -> `long int` -> `long long int`. (*decimal* constants)
-`int` -> `unsigned int` -> `long int` -> `unsigned long int` -> `long long int` -> `unsigned long long int`. (*octal* or *hexadecimal* constants)
+* `long int` -> `long int` -> `long long int`. (*decimal* constants)
+* `int` -> `unsigned int` -> `long int` -> `unsigned long int` -> `long long int` -> `unsigned long long int`. (*octal* or *hexadecimal* constants)
 
 append `U`/`u` or `L`/`l` to contants to force `unsigned` and/or `long`.
 **C99** constants can end with `LL`/`ll` to indicate `long long int`
 
-## Integer overflow
+### Integer overflow
 
 Overflow on signed integers in undefined behavior.
 
 Overflow on `unsigned` integers we get the result `% 2^n`, where `n` is the
 width of the integer.
+
+### Reading/Writing Integers
+
+```c
+unsigned int u;
+
+scanf("%u", &u);    /* reads in base 10 */
+printf("%u", u);    /* writes in base 10 */
+scanf("%o", &o);    /* reads in base 8 */
+printf("%o", o);    /* writes in base 8 */
+scanf("%x", &x);    /* reads in base 8 */
+printf("%x", x);    /* writes in base 8 */
+
+short s;            /* put the letter h before the format character */
+
+scanf("%hd", &s);
+printf("%hd", s);
+
+long l;             /* put the letter l before the format character */
+
+scanf("%ld", &s);
+printf("%ld", s);
+
+long long ll;       /* C99: put the letters ll before the format character */
+
+scanf("%ld", &s);
+printf("%ld", s);
+```
