@@ -41,20 +41,18 @@ C99 introduces `long long int` and `unsigned long long int`. Both are
 required to be at least 64 bits wide. C99 allows implementation defined
 **extended integer types**.
 
-Type of a *decimal* integer is normally `int`. If value is too lange
-than it'll be `long int`, if it's still to large the compiler'll try
-`unsigned long int`. For *octal* or *hexadecimal* it'll try `int` ->
-`unsigned int` -> `long int` -> `unsigned long int`.
+Type of a *decimal* integer is normally `int`.
 
-C99 rule for *decimal* integers is the smallest of `int` -> `long int`
--> `long long int`. For *octal* or *hexadecimal* it's `int`-> `unsigned
-int`-> `long int`-> `unsigned long int`-> `long long int`-> `unsigned
-long long int`.
+If value is too lange in **C89** it'll try
+`long int` -> `unsigned long int`.  (*decimal* constants)
+`int` -> `unsigned int` -> `long int` -> `unsigned long int`. (*octal* or *hexadecimal* constants)
 
-Can append U/u or L/l to contants to force a constant to be `unsigned` and/or
-`long` respectively.
+If value is too lange in **C89** it'll try
+`long int` -> `long int` -> `long long int`. (*decimal* constants)
+`int` -> `unsigned int` -> `long int` -> `unsigned long int` -> `long long int` -> `unsigned long long int`. (*octal* or *hexadecimal* constants)
 
-C99 constants can end with LL/ll to indicate `long long int`
+append `U`/`u` or `L`/`l` to contants to force `unsigned` and/or `long`.
+**C99** constants can end with `LL`/`ll` to indicate `long long int`
 
 ## Integer overflow
 
