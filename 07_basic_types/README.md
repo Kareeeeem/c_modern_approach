@@ -1,5 +1,8 @@
 # Basic types notes
 
+* [Ints](#integer-types)
+* [Floats](#floating-types)
+
 ## Integer types
 
 By default `int` types are signed.
@@ -41,17 +44,19 @@ C99 introduces `long long int` and `unsigned long long int`. Both are
 required to be at least 64 bits wide. C99 allows implementation defined
 **extended integer types**.
 
+### Integer constants
+
 Type of a *decimal* integer is normally `int`.
 
 If value is too lange in **C89** it'll try
 * `long int` -> `unsigned long int`.  (*decimal* constants)
 * `int` -> `unsigned int` -> `long int` -> `unsigned long int`. (*octal* or *hexadecimal* constants)
 
-If value is too lange in **C89** it'll try
+If value is too lange in **C99** it'll try
 * `long int` -> `long int` -> `long long int`. (*decimal* constants)
 * `int` -> `unsigned int` -> `long int` -> `unsigned long int` -> `long long int` -> `unsigned long long int`. (*octal* or *hexadecimal* constants)
 
-append `U`/`u` or `L`/`l` to contants to force `unsigned` and/or `long`.
+Append `U`/`u` or `L`/`l` to contants to force `unsigned` and/or `long`.
 **C99** constants can end with `LL`/`ll` to indicate `long long int`
 
 ### Integer overflow
@@ -87,4 +92,65 @@ long long ll;       /* C99: put the letters ll before the format character */
 
 scanf("%ld", &s);
 printf("%ld", s);
+```
+
+## Floating types
+
+Three types:
+
+* `float`       Single-precision floating-point.
+* `double`      Double-precision floating-point.
+* `long double` Extended-precision floating-point.
+
+The *IEEE Floating-point standard* provides two basic formats for
+floating types; single and double precision. Numbers are stored
+in a form of scientific notation with each number having three parts:
+
+* sign
+* exponent
+* fraction
+
+Number of bits reserved for the exponent determines size of the number.
+Number of bits in the fraction determines precision.
+
+[Floating point guide](http://floating-point-gui.de/)
+
+| type | smallest pos value | largest value | precision |
+| ---- | ------------------ | ------------- | --------- |
+| `float` | 1.17459 * 10^-38 | 3.40282 * 10*38 | 6 digits |
+| `double` | 2.22507 * 10^-308 | 1.79769 * 10*308 | 15 digits |
+
+The table is only valid for machines that follow the IEEE standard.
+
+`long double` varies from machine to machine. 80 and 128 bits being the
+most common sizes.
+
+**C99** categorized floating types into:
+
+* real floating types
+    * `float`
+    * `double`
+    * `long double`
+* complex types
+    * `float _Complex`
+    * `double _Complex`
+    * `long double _Complex`
+
+### Floating constants
+
+Be default they are `double`s. Force to be `float` by appending `F`/`f`.
+
+### Reading/writing Floating types
+
+```c
+double d;
+
+scanf("%lf", &d);    /* Prepend letter l before format char e, f or g when
+                     /* reading. Prepending l when writing is an error in
+                     /* C89 and a NOP in C99 */
+
+
+long double ld;
+scanf("%Lf", &ld);   /* prepend letter L before format char when reading. */
+print("%Lf", ld);    /* prepend letter L before format char when writing. */
 ```
