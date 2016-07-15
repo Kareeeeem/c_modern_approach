@@ -16,8 +16,8 @@ OBJS = $(addprefix $(OBJDIR)/, $(basenames))
 
 all: $(OBJS)
 
-%: %.c
-	$(CC) $(CFLAGS) -lm $< -o $(OBJDIR)/$@
+$(OBJDIR)/%: %.c
+	$(CC) $(CFLAGS) -lm $< -o $@
 
 $(OBJS): | $(OBJDIR)
 
