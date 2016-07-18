@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 int roll_dice(void);
 bool play_game(void);
 
@@ -25,6 +24,7 @@ int main(void) {
         printf("Play again? y/n > ");
         scanf(" %c", &confirm);
     } while (toupper(confirm) != 'N');
+
     printf("wins: %d, losses: %d\n", wins, losses);
 }
 
@@ -35,7 +35,8 @@ int roll_dice(void) {
 bool play_game(void) {
     for (int i = 0; ;i++) {
         int dice = roll_dice();
-        int point = dice;
+        int point;
+
         printf("You rolled %d!\n", dice);
 
         if (i == 0)
@@ -44,10 +45,13 @@ bool play_game(void) {
                 return true;
             case 2: case 3: case 12:
                 return false;
+            default:
+                point = dice;
+                printf("Your point is %d \n", point);
+                break;
             }
-        else if (dice == point)
-            return true;
-        else if (dice == 7)
-            return false;
+
+        else if (dice == point) return true;
+        else if (dice == 7)     return false;
     }
 }
