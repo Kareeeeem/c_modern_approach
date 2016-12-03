@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
+#define N 20
 #define EX(i) printf("Exercise %d.\n", i)
 #define LF puts("")
 
@@ -44,6 +46,43 @@ int main()
     LF;
 
     EX(7);
+    char str7[N] = "hello man";
+
+    *str7 = 0;
+    str7[0] = '\0';
+    strcpy(str7, "");
+    strcat(str7, "");
+    puts("(d) concats to the end of str, the others make str.");
+    LF;
+
+    EX(8);
+
+    char str8[N];
+    strcpy(str8, "tire-bouchon"); // str points to "tire-bouchon"
+    puts(str8);
+    strcpy(&str8[4], "d-or-wi"); // str points to "tired-or-wi"
+    puts(str8);
+    strcat(str8, "red?"); // str points to "tired-or-wired?"
+    puts(str8);
+
+    EX(9);
+    char str9[N];
+    char str9_1[N];
+    // str9 will say computers
+    strcpy(str9, "computer");
+    strcpy(str9_1, "science");
+    if (strcmp(str9, str9_1) < 0) {
+        strcat(str9, str9_1);
+    } else {
+        strcat(str9_1, str9);
+    }
+    str9[strlen(str9) - 6] = '\0';
+    puts(str9);
+
+    EX(10);
+    puts("q is a local variable which will be released after the function is "
+         "done executing. Returning it causes undefined behavior. It is also "
+         "not initialized. To fix initialize and declare static.");
 
     return 0;
 }
