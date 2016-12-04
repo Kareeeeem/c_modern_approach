@@ -6,7 +6,7 @@
 #define EX(i) printf("Exercise %d.\n", i)
 #define LF puts("")
 
-int main()
+int main(void)
 {
     EX(1);
     printf("%c", '\n');    // a
