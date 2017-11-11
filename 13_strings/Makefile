@@ -2,7 +2,6 @@
 # ran from there. I never worked with makefiles so gotta figure out how
 # to make it smarter.
 
-CC = clang
 CFLAGS = -Wall -W -O -g --std=c99
 OBJDIR = bin
 
