@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int compute_vowel_count(const char *expr);
+int compute_vowel_count(const char *p);
 
 int main(void) {
     char sentence[BUFSIZ];
