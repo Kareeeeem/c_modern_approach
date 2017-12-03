@@ -13,7 +13,9 @@ int main(void) {
     for (p = word;;) {
         printf("Enter a word: ");
         while ((c = getchar()) != EOF && c != '\n') {
-            *p++ = c;
+            if (p < (word + BUFSIZ - 1)) {
+                *p++ = c;
+            }
         }
         *p = '\0';
 
