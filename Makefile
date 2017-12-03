@@ -15,8 +15,11 @@ OBJS = $(addprefix $(OBJDIR)/, $(basenames))
 
 all: $(OBJS)
 
-$(OBJDIR)/%: %.c $(OBJDIR)
+$(OBJDIR)/%: %.c
 	$(CC) $(CFLAGS) -lm $< -o $@
+
+# https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html
+$(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
 	mkdir $(OBJDIR)
