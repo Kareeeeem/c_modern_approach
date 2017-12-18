@@ -7,3 +7,7 @@ perhaps you can help me improve.
 
 [the book](http://www.goodreads.com/book/show/187833.C_Programming)
 
+## Disclaimer
+
+Please note that for many exercises here the goal was to get familiar
+with a concept and so the code here is _not_ robust. I know this.

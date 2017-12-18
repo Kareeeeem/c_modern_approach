@@ -1,24 +1,17 @@
-# supposed to be included in the Makefiles in the chapter folders and
-# ran from there. I never worked with makefiles so gotta figure out how
-# to make it smarter.
+# This makefile is modeled after the example on this page.
+# https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html
 
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -g -Wall -Wextra -std=c99
+
 OBJDIR = bin
-
-# this is probably a really roundabout way of doing this. Takes all the c
-# files, extracts the basenames and prefixes the directory. So we go from ex1.c
-# to bin/ex1
-
-sources = $(wildcard *.c)
-basenames = $(basename $(sources))
+basenames = $(basename $(wildcard *.c))
 OBJS = $(addprefix $(OBJDIR)/, $(basenames))
-
-all: $(OBJS)
 
 $(OBJDIR)/%: %.c
 	$(CC) $(CFLAGS) -lm $< -o $@
 
-# https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html
+all: $(OBJS)
+
 $(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
