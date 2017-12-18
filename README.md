@@ -10,4 +10,4 @@ perhaps you can help me improve.
 ## Disclaimer
 
 Please note that for many exercises here the goal was to get familiar
-with a concept and so the code here is _not_ robust. I know this.
+with a concept and so the code is _not_ robust or secure whatsoever. 
