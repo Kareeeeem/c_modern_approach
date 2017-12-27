@@ -41,7 +41,7 @@ int eval_rpn(const char *expression, long double *result) {
          right;
 
     while (*expression) {
-        // attemt to extract a long double
+        // attempt to extract a long double
         val = strtold(expression, &__expression);
         if (expression != __expression) {
             // If __expression is advanced beyond expression then a long double
