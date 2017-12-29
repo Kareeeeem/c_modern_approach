@@ -1,0 +1,13 @@
+```
+struct {
+    double a;      // 8 bytes
+    struct {
+        char b[4]; // 4 bytes
+        double c;  // 8 bytes
+        int d;     // 4 bytes
+    } e;           
+    char f[4];     // 4 bytes
+} s;
+```
+
+28 bytes

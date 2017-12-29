@@ -3,4 +3,4 @@ tags
 *.pdf
 .env
 *.o
-a.aut
+a.out
